@@ -5,5 +5,5 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [mdx(), keystatic(), react()],
-  output: 'hybrid'
+  output: 'server'
 });
