@@ -1,3 +1,4 @@
+export const prerender = false;
 import { makeRouteHandler } from '@keystatic/astro/route-handler';
 import config from '../../../../keystatic.config';
 

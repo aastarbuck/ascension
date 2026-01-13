@@ -1,14 +1,5 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import keystatic from '@keystatic/astro';
-import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
-import node from '@astrojs/node';
+export const prerender = false;
+import { makeRouteHandler } from '@keystatic/astro/route-handler';
+import config from '../../../../keystatic.config';
 
-export default defineConfig({
-  integrations: [mdx(), keystatic(), react(), tailwind()],
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
-});
+export const ALL = makeRouteHandler({ config });
