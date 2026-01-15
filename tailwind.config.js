@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,7 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        secondary: ['YourSecondaryFontName', 'fallback-font'],
+        secondary: ['YourSecondaryFontName', 'sans-serif']
+      },
+      fontSize: {
+        'txt-s': '0.875rem'  // example size, adjust as needed
       }
     }
   },
