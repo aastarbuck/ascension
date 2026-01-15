@@ -1,35 +1,14 @@
-{
-  "name": "ascension",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "packageManager": "npm@10.8.2",
-  "engines": {
-    "node": ">=18.0.0"
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{astro,html,md,mdx,js,jsx,ts,tsx,svelte,vue}"
+  ],
+  theme: {
+    extend: {}
   },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "format": "prettier -w ."
-  },
-  "dependencies": {
-    "astro": "^5.12.0",
-    "@astrojs/mdx": "^4.2.1",
-    "@astrojs/react": "^4.2.1",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "tailwindcss": "^3.4.14",
-    "@tailwindcss/typography": "^0.5.10",
-    "typescript": "^5.6.3"
-  }
-}
+  plugins: [
+    require("@tailwindcss/typography")
+  ]
+};
 ``
