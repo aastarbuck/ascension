@@ -31,27 +31,25 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: |
-          npm ci
+      # NOTE:
+      # We intentionally do NOT run "npm ci" here.
+      # The SWA deploy action below will run the build using the custom command.
+      # This avoids the lockfile strictness that is failing in your Action run.
 
-      - name: Build site
-        run: |
-          npm run build
-
-      - name: Build And Deploy
+      - name: Build And Deploy (SWA)
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # Use your existing secret EXACTLY as it appears in Settings > Secrets > Actions
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_STONE_02EADCF10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}   # enables PR comments/status
           action: "upload"
 
-          ###### Repository/Build Configurations - adjust only if your paths differ ######
-          app_location: "/"          # Astro project root
-          api_location: ""           # leave blank if no API
-          output_location: "/dist"   # Astro build output (astro build -> dist/)
+          ###### Repository/Build Configurations ######
+          app_location: "/"            # Astro project root
+          api_location: ""             # leave blank if no API
+          output_location: "dist"      # Astro build output
+          # Use npm install (not npm ci) + build; this resolves lockfile mismatch in CI
+          app_build_command: npm install --no-audit --no-fund && npm run build
           ###### End of Repository/Build Configurations ######
 
   close_pull_request:
@@ -66,3 +64,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_STONE_02EADCF10 }}
           action: "close"
+``
