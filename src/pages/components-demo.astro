@@ -1,0 +1,68 @@
+---
+import BackToTop from "../components/BackToTop.astro";
+import PromoModal from "../components/PromoModal.astro";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI Demo · Ascension</title>
+    <style>
+      /* Minimal, ASCII-only, no CSS functions */
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        background: #0b1220; /* dark slate */
+        color: #e5e7eb;      /* light text */
+        font-family: Inter, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      .topbar {
+        background: #0f172a;
+        border-bottom: 1px solid #253046;
+        padding: 12px 16px;
+      }
+      .brand { color: #e5e7eb; text-decoration: none; font-weight: 600; }
+      .wrap {
+        width: 92vw;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      .panel {
+        background: #0f172a;
+        border: 1px solid #253046;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+      }
+      a { color: #3b82f6; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      /Ascension</a>
+    </div>
+
+    <main class="wrap">
+      <div class="panel">
+        <h1 style="margin:0 0 8px 0; font-size:20px;">UI Demo</h1>
+        <p style="margin:0;">Timed modal popup and floating Back to top on a dark background.</p>
+      </div>
+
+      <div class="panel">
+        <h2 style="font-size:18px; margin-top:0;">Some long content</h2>
+        <p>Scroll down to see the Back to top button. A modal will show a few seconds after load.</p>
+        <div style="height:1200px;"></div>
+        <p>Bottom of demo content.</p>
+      </div>
+    </main>
+
+    <!-- Timed popup & Back to top -->
+    <PromoModal client:idle delayMs={6000} />
+    <BackToTop client:idle />
+  </body>
+</html>
